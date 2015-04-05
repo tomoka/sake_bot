@@ -45,7 +45,7 @@ module.exports = (robot) ->
 
 
   # 文字列helloのみで反応
-  robot.hear /sake/, (msg) -> msg.reply callback
+  robot.hear /sake/, (msg) -> msg.reply forecast + "あいうえお"
 
   # @で呼びかけてhogeで反応
   # robot.respond /hoge/i, (msg) -> msg.send "fuga"
