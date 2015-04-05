@@ -56,7 +56,10 @@ module.exports = (robot) ->
         if arraySakePrefectureCode[index] is message
           sakeNum = index
     sakeUrl = "http://www.sakenote.com/api/v1/sakes?token=95f9b2288f8acd7eb2cf190af7cfbc223df5823c&prefecture_code=" + sakeNum
-    msg.send sakeUrl
+    data = JSON.parse(sakeUrl.body)
+    msg.send "#{data.passenger} taking midnight train going #{data.destination}"
+
+    # msg.send sakeUrl
 
   # @で呼びかけてhogeで反応
   # robot.respond /hoge/i, (msg) -> msg.send "fuga"
