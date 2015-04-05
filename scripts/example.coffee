@@ -23,7 +23,7 @@ module.exports = (robot) ->
   # d3.json sakeUrl, (error, jsonObj)
 
   # 文字列helloのみで反応
-  robot.hear /sake/, (msg) -> msg.reply data
+  robot.hear /sake/, (msg) -> msg.reply sakeUrl.text
 
   # @で呼びかけてhogeで反応
   # robot.respond /hoge/i, (msg) -> msg.send "fuga"
