@@ -46,6 +46,15 @@ module.exports = (robot) ->
   robot.hear /I like pie/i, (msg) ->
     msg.emote "makes a freshly baked pie"
 
+  robot.http(sakeUrl)
+    .header('Accept', 'application/json')
+    .get() (err, res, body) ->
+      # error checking code here
+
+      data = JSON.parse(body)
+      msg.send "#{data.passenger} taking midnight train going #{data.destination}"
+    
+
   # @で呼びかけてhogeで反応
   # robot.respond /hoge/i, (msg) -> msg.send "fuga"
 
