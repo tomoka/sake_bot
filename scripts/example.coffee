@@ -59,7 +59,7 @@ module.exports = (robot) ->
 
     robot.http(sakeUrl)
       .header('Accept', 'application/json')
-      .get() (sake_name,sake_url,sakes) ->
+      .get() (sakes,num_pages) ->
         if response.getHeader('Content-Type') isnt 'application/json'
           msg.send "Didn't get back JSON :("
           return
