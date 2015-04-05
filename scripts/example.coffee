@@ -18,7 +18,7 @@ module.exports = (robot) ->
 
   sakeUrl = "http://www.sakenote.com/api/v1/sakes?token=95f9b2288f8acd7eb2cf190af7cfbc223df5823c&prefecture_code=" + sakeNum
   # jsonObj = JSON.parse sakeUrl
-  JSON.parse(sakeUrl [, reviver])
+  # JSON.parse(sakeUrl [, reviver])
   # d3.json sakeUrl, (error, jsonObj)
 
   # 文字列helloのみで反応
