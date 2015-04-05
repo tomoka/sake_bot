@@ -52,7 +52,7 @@ module.exports = (robot) ->
 
   robot.respond /(\S+)$/, (msg) ->
     message = msg.match[1]
-    robot.brain.set 'example', message
+    # robot.brain.set 'example', message
     msg.send message
 
   # @で呼びかけてhogeで反応
