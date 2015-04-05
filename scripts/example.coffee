@@ -57,9 +57,9 @@ module.exports = (robot) ->
           sakeNum = index
     sakeUrl = "http://www.sakenote.com/api/v1/sakes?token=95f9b2288f8acd7eb2cf190af7cfbc223df5823c&prefecture_code=" + sakeNum
 
-    robot.http(sakeUrl)
+    robot.http(sakeUrl,date)
       .header('Accept', 'application/json')
-      .get(sakeUrl,date) (sakes,num_pages) ->
+      .get() (sakes,num_pages) ->
         if response.getHeader('Content-Type') isnt 'application/json'
           msg.send "Didn't get back JSON :("
           return
