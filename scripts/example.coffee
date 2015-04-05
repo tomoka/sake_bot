@@ -20,22 +20,22 @@ module.exports = (robot) ->
   sakeUrl = "http://www.sakenote.com/api/v1/sakes?token=95f9b2288f8acd7eb2cf190af7cfbc223df5823c&prefecture_code=" + sakeNum
 
   # URLにアクセスしてデータを取得する
-  request sakeUrl, (err, response, body) ->
-    if err  # プログラムエラー
-      throw err
-          return
+  # request sakeUrl, (err, response, body) ->
+  #  if err  # プログラムエラー
+  #     throw err
+  #         return
 
-        if response.statusCode is 200
-          try
-            json = JSON.parse body
-          catch e
-            callback new Error "JSON parse error"
-            return
-          # sake_name = json.sakes[json.sake_name.length-2]  # 直近の予報データ
-          callback null, json
+  #     if response.statusCode is 200
+  #       try
+  #         json = JSON.parse body
+  #       catch e
+  #         callback new Error "JSON parse error"
+  #         return
+  #       # sake_name = json.sakes[json.sake_name.length-2]  # 直近の予報データ
+  #       callback null, json
 
   # 文字列helloのみで反応
-  robot.hear /hello/, (msg) -> msg.reply json
+  robot.hear /hello/, (msg) -> msg.reply sakeUrl
 
   # @で呼びかけてhogeで反応
   # robot.respond /hoge/i, (msg) -> msg.send "fuga"
