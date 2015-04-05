@@ -35,7 +35,16 @@ module.exports = (robot) ->
   #       callback null, json
 
   # 文字列helloのみで反応
-  robot.hear /hello/, (msg) -> msg.reply robot.hear
+  # robot.hear /hello/, (msg) -> msg.reply robot.hear
+
+  robot.hear /badger/i, (msg) ->
+    msg.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
+
+  robot.respond /open the pod bay doors/i, (msg) ->
+    msg.reply "I'm afraid I can't let you do that."
+
+  robot.hear /I like pie/i, (msg) ->
+    msg.emote "makes a freshly baked pie"
 
   # @で呼びかけてhogeで反応
   # robot.respond /hoge/i, (msg) -> msg.send "fuga"
