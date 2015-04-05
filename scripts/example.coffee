@@ -18,23 +18,15 @@ module.exports = (robot) ->
 
   sakeUrl = "http://www.sakenote.com/api/v1/sakes?token=95f9b2288f8acd7eb2cf190af7cfbc223df5823c&prefecture_code=" + sakeNum
   # jsonObj = JSON.parse sakeUrl
+    data = JSON.parse sakeUrl
   # JSON.parse(sakeUrl [, reviver])
   # d3.json sakeUrl, (error, jsonObj)
 
   # 文字列helloのみで反応
-  robot.hear /sake/, (msg) -> msg.reply "fuga"
+  robot.hear /sake/, (msg) -> msg.reply data
 
   # @で呼びかけてhogeで反応
   # robot.respond /hoge/i, (msg) -> msg.send "fuga"
-
-  #  robot.hear /php man (.+)$/, (msg) ->
-  #      baseUrl = "http://php.net/manual-lookup.php?lang=ja&scope=quickref&pattern="
-  #      baseUrl = "https://www.google.co.jp/search?sclient=psy-ab&inlang=ja&domains=plusone.jpn.org&hl=ja&ie=Shift_JIS&oe=Shift_JIS&q="
-  #      baseKey = encodeURIComponent(msg.match[1])
-  #      baseUrl += baseKey
-  #      robot.http(baseUrl).get() (err, res, body) ->
-  #          msg.send res.headers.location
-
 
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
