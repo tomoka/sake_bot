@@ -9,8 +9,15 @@
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = (robot) ->
+
+  # 文字列helloのみで反応
   robot.hear /hello/, (msg) -> msg.reply 'hi'
+
+  # @で呼びかけてhogeで反応
   robot.respond /hoge/i, (msg) -> msg.send "fuga"
+
+  # phpマニュアル
+  robot.hear /php man (.+)$/, (msg) -> msg.send msg.match[1]
 
 
   # robot.hear /badger/i, (res) ->
