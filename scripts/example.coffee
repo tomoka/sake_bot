@@ -58,7 +58,7 @@ module.exports = (robot) ->
   #  sakeNum = 11
   #  sakeUrl = "http://www.sakenote.com/api/v1/sakes?token=95f9b2288f8acd7eb2cf190af7cfbc223df5823c&prefecture_code=" + sakeNum
 
-  #  robot.brain.set 'example', message
+    robot.brain.set 'example', message
     msg.send message
 
   # @で呼びかけてhogeで反応
