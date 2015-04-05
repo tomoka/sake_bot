@@ -35,17 +35,8 @@ request apiUrl, (err, response, body) ->
         catch e
           callback new Error "JSON parse error"
           return
-        forecast = json.forecasts[json.forecasts.length-2]  # 直近の予報データ
-        weather = "#{json.location.city}の#{forecast.dateLabel}の天気は#{forecast.telop}"
-        if forecast.temperature.max?  # 気温情報がある場合
-          weather += "、最高気温は#{forecast.temperature.max.celsius}度、" + \
-            "最低気温は#{forecast.temperature.min.celsius}度"
-        weather += "です。"
+        sake_name = json.sakes[json.sake_name.length-2]  # 直近の予報データ
         callback null, weather
-      else
-        callback new Error "Response error: #{response.statusCode}"
-
-
 
   # 文字列helloのみで反応
   robot.hear /hello/, (msg) -> msg.reply "あいうえお"
