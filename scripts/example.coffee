@@ -56,10 +56,23 @@ module.exports = (robot) ->
         if arraySakePrefectureCode[index] is message
           sakeNum = index
     sakeUrl = "http://www.sakenote.com/api/v1/sakes?token=95f9b2288f8acd7eb2cf190af7cfbc223df5823c&prefecture_code=" + sakeNum
-    data = JSON.parse(sakeUrl.body)
-    msg.send "#{data.passenger} taking midnight train going #{data.destination}"
 
-    # msg.send sakeUrl
+    robot.http(sakeUrl)
+      .header('Accept', 'application/json')
+      .get() (err, res, body) ->
+        if response.getHeader('Content-Type') isnt 'application/json'
+          msg.send "Didn't get back JSON :("
+          return
+
+      data = null
+      try
+        data = JSON.parse(body)
+      catch error
+        msg.send "Ran into an error parsing JSON :("
+        return
+      msg.send "#{data.passenger} taking midnight train going #{data.destination}"
+      
+    msg.send sakeUrl
 
   # @で呼びかけてhogeで反応
   # robot.respond /hoge/i, (msg) -> msg.send "fuga"
