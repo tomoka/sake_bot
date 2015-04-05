@@ -31,6 +31,7 @@ module.exports = (robot) ->
   #       # sake_name = json.sakes[json.sake_name.length-2]  # 直近の予報データ
   #       callback null, json
 
+  # 文字列helloのみで反応
   robot.http(sakeUrl)
     .header('Accept', 'application/json')
     .get() (err, res, body) ->
@@ -49,7 +50,6 @@ module.exports = (robot) ->
 
       # your code here
 
-  # まねっこ
   robot.respond /(\S+)$/, (msg) ->
     message = msg.match[1]
     robot.brain.set 'example', message
