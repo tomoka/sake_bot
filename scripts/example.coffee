@@ -17,7 +17,11 @@ module.exports = (robot) ->
   robot.respond /hoge/i, (msg) -> msg.send "fuga"
 
   # phpマニュアル
-  robot.hear /php man (.+)$/, (msg) -> msg.send msg.match[1]
+  robot.hear /php man (.+)$/, (msg) ->
+      baseUrl = "http://php.net/manual-lookup.php?lang=ja&scope=quickref&pattern="
+      baseUrl += msg.match[1]
+      robot.http(baseUrl).get() (err, res, body) ->
+          msg.send res.headers.location
 
 
   # robot.hear /badger/i, (res) ->
