@@ -18,7 +18,7 @@ module.exports = (robot) ->
 
 
   # 文字列helloのみで反応
-  //robot.hear /sake/, (msg) -> msg.reply arraySakePrefectureCode[sakeNum]
+  # robot.hear /sake/, (msg) -> msg.reply arraySakePrefectureCode[sakeNum]
   robot.hear /sake/, (msg) -> msg.reply sakeNum
 
   # @で呼びかけてhogeで反応
