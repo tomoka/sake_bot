@@ -32,23 +32,6 @@ module.exports = (robot) ->
   #       callback null, json
 
   # 文字列helloのみで反応
-  robot.http(sakeUrl)
-    .header('Accept', 'application/json')
-    .get() (err, res, body) ->
-      # err & response status checking code here
-
-      if response.getHeader('Content-Type') isnt 'application/json'
-        msg.send "Didn't get back JSON :("
-        return
-
-      data = null
-      try
-        data = JSON.parse(body)
-      catch error
-       msg.send "Ran into an error parsing JSON :("
-       return
-
-      # your code here
 
   robot.respond /(\S+)$/, (msg) ->
     message = msg.match[1]
