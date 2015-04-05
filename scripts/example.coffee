@@ -52,7 +52,9 @@ module.exports = (robot) ->
 
   robot.respond /(\S+)$/, (msg) ->
     message = msg.match[1]
-    # robot.brain.set 'example', message
+    for value, index in arraySakePrefectureCode
+        if arraySakePrefectureCode[index] is message
+          sakeNum = index
     msg.send message
 
   # @で呼びかけてhogeで反応
