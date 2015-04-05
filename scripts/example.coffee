@@ -57,7 +57,7 @@ module.exports = (robot) ->
           sakeNum = index
     sakeUrl = "http://www.sakenote.com/api/v1/sakes?token=95f9b2288f8acd7eb2cf190af7cfbc223df5823c&prefecture_code=" + sakeNum
 
-    robot.http(sakeUrl,date)
+    robot.http(sakeUrl)
       .header('Accept', 'application/json')
       .get() (sakes,num_pages) ->
         if response.getHeader('Content-Type') isnt 'application/json'
@@ -66,7 +66,7 @@ module.exports = (robot) ->
 
       data = null
       try
-        data = JSON.parse 'num_pages'
+        data = JSON.parse (sakes,num_pages)
         # data = JSON.stringify()
       catch error
         msg.send "Ran into an error parsing JSON :("
