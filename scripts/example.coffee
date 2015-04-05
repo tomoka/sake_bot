@@ -17,13 +17,35 @@ module.exports = (robot) ->
   arraySakePrefectureCode = ["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"]
 
   sakeUrl = "http://www.sakenote.com/api/v1/sakes?token=95f9b2288f8acd7eb2cf190af7cfbc223df5823c&prefecture_code=" + sakeNum
-  # jsonObj = JSON.parse sakeUrl
-    data = JSON.parse sakeUrl
-  # JSON.parse(sakeUrl [, reviver])
-  # d3.json sakeUrl, (error, jsonObj)
+
+
+  getWeatherByCity = (sakeNum, callback) ->
+    apiUrl = sakeUrl
+    request apiUrl, (err, response, body) ->
+      if err
+        callback err
+        return
+
+      if response.statusCode is 200
+        try
+          json = JSON.parse body
+        catch e
+          callback new Error "JSON parse error"
+          return
+        forecast = json.forecasts[json.forecasts.length-2]  # 直近の予報データ
+        weather = "#{json.location.city}の#{forecast.dateLabel}の天気は#{forecast.telop}"
+        if forecast.temperature.max?  # 気温情報がある場合
+          weather += "、最高気温は#{forecast.temperature.max.celsius}度、" + \
+            "最低気温は#{forecast.temperature.min.celsius}度"
+        weather += "です。"
+        callback null, weather
+      else
+        callback new Error "Response error: #{response.statusCode}"
+
+
 
   # 文字列helloのみで反応
-  robot.hear /sake/, (msg) -> msg.reply sakeUrl.text
+  robot.hear /sake/, (msg) -> msg.reply weather
 
   # @で呼びかけてhogeで反応
   # robot.respond /hoge/i, (msg) -> msg.send "fuga"
