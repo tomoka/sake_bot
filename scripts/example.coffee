@@ -18,11 +18,15 @@ module.exports = (robot) ->
 
   sakeUrl = "http://www.sakenote.com/api/v1/sakes?token=95f9b2288f8acd7eb2cf190af7cfbc223df5823c&prefecture_code=" + sakeNum
 
+request = require "request"
 
-  getWeatherByCity = (sakeNum, callback) -> apiUrl = sakeUrl
-    request apiUrl, (err, response, body) ->
-      if err
-        callback err
+sakeNum = "24"  # 東京
+
+apiUrl = "http://www.sakenote.com/api/v1/sakes?token=95f9b2288f8acd7eb2cf190af7cfbc223df5823c&prefecture_code=#{sakeNum}"
+# URLにアクセスしてデータを取得する
+request apiUrl, (err, response, body) ->
+  if err  # プログラムエラー
+    throw err
         return
 
       if response.statusCode is 200
