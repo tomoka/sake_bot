@@ -11,16 +11,17 @@
 module.exports = (robot) ->
 
   # 文字列helloのみで反応
-  robot.hear /hello/, (msg) -> msg.reply 'hi'
+  # robot.hear /hello/, (msg) -> msg.reply 'hi'
 
   # @で呼びかけてhogeで反応
-  robot.respond /hoge/i, (msg) -> msg.send "fuga"
+  # robot.respond /hoge/i, (msg) -> msg.send "fuga"
 
-  # phpマニュアル
-  baseUrl = "http://php.net/manual-lookup.php?lang=ja&scope=quickref&pattern="
-  baseUrl += msg.match[1]
-  robot.http(baseUrl).get() (err, res, body) ->
-      msg.send res.headers.location
+  module.exports = (robot) ->
+    robot.hear /php man (.+)$/, (msg) ->
+        baseUrl = "http://php.net/manual-lookup.php?lang=ja&scope=quickref&pattern="
+        baseUrl += msg.match[1]
+        robot.http(baseUrl).get() (err, res, body) ->
+            msg.send res.headers.location
 
 
   # robot.hear /badger/i, (res) ->
