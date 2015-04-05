@@ -66,8 +66,8 @@ module.exports = (robot) ->
 
       data = null
       try
-        # data = JSON.parse 'sake_name'
-        data = JSON.stringify(sakeUrl.sakes)
+        data = JSON.parse 'sakes'
+        # data = JSON.stringify()
       catch error
         msg.send "Ran into an error parsing JSON :("
         return
