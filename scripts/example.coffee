@@ -16,7 +16,6 @@ module.exports = (robot) ->
   # @で呼びかけてhogeで反応
   # robot.respond /hoge/i, (msg) -> msg.send "fuga"
 
-  module.exports = (robot) ->
     robot.hear /php man (.+)$/, (msg) ->
         baseUrl = "http://php.net/manual-lookup.php?lang=ja&scope=quickref&pattern="
         baseUrl += msg.match[1]
