@@ -19,8 +19,7 @@ module.exports = (robot) ->
   sakeUrl = "http://www.sakenote.com/api/v1/sakes?token=95f9b2288f8acd7eb2cf190af7cfbc223df5823c&prefecture_code=" + sakeNum
 
 
-  getWeatherByCity = (sakeNum, callback) ->
-    apiUrl = sakeUrl
+  getWeatherByCity = (sakeNum, callback) -> apiUrl = sakeUrl
     request apiUrl, (err, response, body) ->
       if err
         callback err
@@ -45,7 +44,7 @@ module.exports = (robot) ->
 
 
   # 文字列helloのみで反応
-  robot.hear /sake/, (msg) -> msg.reply forecast + "あいうえお"
+  robot.hear /hello/, (msg) -> msg.reply "あいうえお"
 
   # @で呼びかけてhogeで反応
   # robot.respond /hoge/i, (msg) -> msg.send "fuga"
