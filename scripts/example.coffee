@@ -53,13 +53,13 @@ module.exports = (robot) ->
   robot.respond /(\S+)$/, (msg) ->
     message = msg.match[1]
 
-  for value, i in arraySakePrefectureCode
-    if arraySakePrefectureCode[i] is message
-    sakeNum = i
+for value,index in arraySakePrefectureCode
+    value is message
+    sakeNum = index
     sakeUrl = "http://www.sakenote.com/api/v1/sakes?token=95f9b2288f8acd7eb2cf190af7cfbc223df5823c&prefecture_code=" + sakeNum
 
   # robot.brain.set 'example', message
-    msg.send sakeUrl
+    msg.send message + sakeUrl
 
   # @で呼びかけてhogeで反応
   # robot.respond /hoge/i, (msg) -> msg.send "fuga"
