@@ -8,7 +8,7 @@
 #
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
-sakeNum = Math.random(47)
+sakeNum = Math.random()*48
 sakeNum = Math.floor(sakeNum)
 
 module.exports = (robot) ->
