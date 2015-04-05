@@ -18,10 +18,10 @@ module.exports = (robot) ->
 
   sakeUrl = "http://www.sakenote.com/api/v1/sakes?token=95f9b2288f8acd7eb2cf190af7cfbc223df5823c&prefecture_code=" + sakeNum
   # jsonObj = JSON.parse sakeUrl
-  d3.json sakeUrl, (error, jsonObj) -> console.log(jsonObj)
+  d3.json sakeUrl, (error, jsonObj)
 
   # 文字列helloのみで反応
-  robot.hear /sake/, (msg) -> msg.reply jsonObj
+  robot.hear /sake/, (msg) -> msg.reply "fuga"
 
   # @で呼びかけてhogeで反応
   # robot.respond /hoge/i, (msg) -> msg.send "fuga"
