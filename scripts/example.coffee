@@ -59,7 +59,7 @@ module.exports = (robot) ->
 
     robot.http(sakeUrl)
       .header('Accept', 'application/json')
-      .get() (err, res, body) ->
+      .get() (sake_name, maker_url, sakes) ->
         if response.getHeader('Content-Type') isnt 'application/json'
           msg.send "Didn't get back JSON :("
           return
@@ -68,8 +68,7 @@ module.exports = (robot) ->
       try
         data = JSON.parse(body)
       catch error
-        # msg.send "Ran into an error parsing JSON :("
-        msg.send date
+        msg.send "Ran into an error parsing JSON :("
         return
       msg.send "#{data.passenger} taking midnight train going #{data.destination}"
 
