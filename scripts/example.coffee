@@ -54,7 +54,7 @@ module.exports = (robot) ->
       catch error
         msg.send "Ran into an error parsing JSON :("
         return
-      msg.send "#{data.passenger} taking midnight train going #{data.destination}"
+      msg.send "#{data.sakes} taking midnight train going #{data.sakes}"
 
     msg.send sakeUrl
 
