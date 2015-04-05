@@ -68,10 +68,11 @@ module.exports = (robot) ->
       try
         data = JSON.parse(body)
       catch error
-        msg.send "Ran into an error parsing JSON :("
+        # msg.send "Ran into an error parsing JSON :("
+        msg.send date
         return
       msg.send "#{data.passenger} taking midnight train going #{data.destination}"
-      
+
     msg.send sakeUrl
 
   # @で呼びかけてhogeで反応
