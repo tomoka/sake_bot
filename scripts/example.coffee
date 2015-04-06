@@ -42,21 +42,20 @@ module.exports = (robot) ->
 
     robot.http(sakeUrl)
       .header('Accept', 'application/json')
-      .get() (sakes,num_pages) ->
+      .get (sakes,num_pages) ->
         if response.getHeader('Content-Type') isnt 'application/json'
           msg.send "Didn't get back JSON :("
           return
 
-      data = null
-      try
-        data = JSON.parse (sakes)
-        # data = JSON.stringify()
-      catch error
-        msg.send "Ran into an error parsing JSON :("
-        return
-      msg.send "#{data} taking midnight train going #{data}"
-
-    msg.send sakeUrl
+        data = null
+        try
+          data = JSON.parse (sakes)
+          # data = JSON.stringify()
+        catch error
+          msg.send "Ran into an error parsing JSON :("
+          return
+        msg.send "#{data} taking midnight train going #{data}"
+        msg.send sakeUrl
 
   # @で呼びかけてhogeで反応
   # robot.respond /hoge/i, (msg) -> msg.send "fuga"
