@@ -57,9 +57,12 @@ module.exports = (robot) ->
           msg.send "Ran into an error parsing JSON :("
           return
         console.log '-------------------------'
+        console.log data.sakes.length
+        console.log '-------------------------'
         console.log data.sakes[0]
         console.log '-------------------------'
         console.log data.sakes[0].sake_name
+        msg.send data.sakes.length
         msg.send data.sakes[0].sake_name
         msg.send data.sakes[0].url
 
