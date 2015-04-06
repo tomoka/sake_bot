@@ -60,9 +60,8 @@ module.exports = (robot) ->
         console.log data.sakes[0]
         console.log '-------------------------'
         console.log data.sakes[0].sake_name
-        msg.send data.sakes[1].sake_name
-        msg.send data.sakes[1].sake_url
-        msg.send sakeUrl
+        msg.send data.sakes[0].sake_name
+        msg.send data.sakes[0].url
 
   # @で呼びかけてhogeで反応
   # robot.respond /hoge/i, (msg) -> msg.send "fuga"
