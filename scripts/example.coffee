@@ -53,12 +53,11 @@ module.exports = (robot) ->
         data = null
         try
           data = JSON.parse (body)
-          sakeArray = data.split(",")
         catch error
           msg.send "Ran into an error parsing JSON :("
           return
-        
-        msg.send "#{sakeArray}"
+        msg.send "#{data} taking midnight train going #{data}"
+        msg.send sakeUrl
 
   # @で呼びかけてhogeで反応
   # robot.respond /hoge/i, (msg) -> msg.send "fuga"
