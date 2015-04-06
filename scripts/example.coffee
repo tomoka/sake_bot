@@ -57,7 +57,7 @@ module.exports = (robot) ->
           msg.send "Ran into an error parsing JSON :("
           return
         sakeArray = data.split(",")
-        msg.send sakeArray
+        msg.send "#{sakeArray}"
 
   # @で呼びかけてhogeで反応
   # robot.respond /hoge/i, (msg) -> msg.send "fuga"
