@@ -37,7 +37,7 @@ module.exports = (robot) ->
     message = msg.match[1]
     for value, index in arraySakePrefectureCode
         if arraySakePrefectureCode[index] is message
-          sakeNum = index
+          sakeNum = index + 1
     sakeUrl = "http://www.sakenote.com/api/v1/sakes?token=95f9b2288f8acd7eb2cf190af7cfbc223df5823c&prefecture_code=" + sakeNum
 
     robot.http(sakeUrl)
@@ -46,7 +46,7 @@ module.exports = (robot) ->
         console.log err
         console.log res
         console.log body
-        # if res.getHeader('Content-Type') isnt 'application/json'
+        # if ! res.headers['content-type'].match /^application¥/json/
         #  msg.send "Didn't get back JSON :("
         #  return
 
