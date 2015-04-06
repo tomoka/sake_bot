@@ -58,7 +58,7 @@ module.exports = (robot) ->
           return
         console.log data
         console.log '-------------------------'
-        console.log data.sakes[1]
+        console.log data.sakes[1].sake_name
         msg.send data.sakes[1]
         msg.send sakeUrl
 
