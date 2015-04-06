@@ -61,11 +61,11 @@ module.exports = (robot) ->
         console.log '-------------------------'
         console.log data.sakes[29]
         console.log '-------------------------'
-        console.log data.sakes[29].sake_name
+        console.log data.sakes[29].maker_name
         msg.send '-------------------------'
         msg.send "#{data.sakes.length}" #lengthはindex
         msg.send data.sakes[29].sake_name
-        msg.send data.sakes[29].url
+        msg.send data.sakes[29].maker_name + data.sakes[29].maker_url
         msg.send '-------------------------'
 
   # @で呼びかけてhogeで反応
