@@ -43,9 +43,9 @@ module.exports = (robot) ->
     robot.http(sakeUrl)
       .header('Accept', 'application/json')
       .get() (err, res, body) ->
-        console.log err
-        console.log res
-        console.log body
+        # console.log err
+        # console.log res
+        # console.log body
         # if ! res.headers['content-type'].match /^application¥/json/
         #  msg.send "Didn't get back JSON :("
         #  return
@@ -53,12 +53,10 @@ module.exports = (robot) ->
         data = null
         try
           data = JSON.parse (body)
-          # data = JSON.stringify()
         catch error
           msg.send "Ran into an error parsing JSON :("
           return
-        msg.send "#{data} taking midnight train going #{data}"
-        msg.send sakeUrl
+        msg.send body
 
   # @で呼びかけてhogeで反応
   # robot.respond /hoge/i, (msg) -> msg.send "fuga"
