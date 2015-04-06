@@ -59,12 +59,14 @@ module.exports = (robot) ->
         console.log '-------------------------'
         console.log data.sakes.length
         console.log '-------------------------'
-        console.log data.sakes[0]
+        console.log data.sakes[30]
         console.log '-------------------------'
-        console.log data.sakes[0].sake_name
+        console.log data.sakes[30].sake_name
+        msg.send '-------------------------'
         msg.send "#{data.sakes.length}"
-        msg.send data.sakes[0].sake_name
-        msg.send data.sakes[0].url
+        msg.send data.sakes[30].sake_name
+        msg.send data.sakes[30].url
+        msg.send '-------------------------'
 
   # @で呼びかけてhogeで反応
   # robot.respond /hoge/i, (msg) -> msg.send "fuga"
