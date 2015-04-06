@@ -53,10 +53,11 @@ module.exports = (robot) ->
         data = null
         try
           data = JSON.parse (body)
+          console.log data.toString()
         catch error
           msg.send "Ran into an error parsing JSON :("
           return
-        console.log data.toString()
+        
         msg.send sakeUrl
 
   # @で呼びかけてhogeで反応
