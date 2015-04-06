@@ -56,10 +56,11 @@ module.exports = (robot) ->
         catch error
           msg.send "Ran into an error parsing JSON :("
           return
-        console.log data
         console.log '-------------------------'
-        console.log data.sakes[1].sake_name
-        msg.send data.sakes[1]
+        console.log data.sakes[0]
+        console.log '-------------------------'
+        console.log data.sakes[0].sake_name
+        msg.send data.sakes[1].sake_name
         msg.send sakeUrl
 
   # @で呼びかけてhogeで反応
