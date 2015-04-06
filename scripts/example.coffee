@@ -44,6 +44,8 @@ module.exports = (robot) ->
       .header('Accept', 'application/json')
       .get() (err, res, body) ->
         msg.send "#{err}"
+        msg.send "#{res}"
+        msg.send "#{body}"
         if res.getHeader('Content-Type') isnt 'application/json'
           msg.send "Didn't get back JSON :("
           return
