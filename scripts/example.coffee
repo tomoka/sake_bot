@@ -61,6 +61,7 @@ module.exports = (robot) ->
         console.log '-------------------------'
         console.log data.sakes[0].sake_name
         msg.send data.sakes[1].sake_name
+        msg.send data.sakes[1].sake_url
         msg.send sakeUrl
 
   # @で呼びかけてhogeで反応
