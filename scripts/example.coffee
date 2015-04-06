@@ -56,7 +56,7 @@ module.exports = (robot) ->
         catch error
           msg.send "Ran into an error parsing JSON :("
           return
-        msg.send "#{data.split(',')}"
+        console.log data.split ','
         msg.send sakeUrl
 
   # @で呼びかけてhogeで反応
