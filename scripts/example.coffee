@@ -80,7 +80,7 @@ module.exports = (robot) ->
         console.log '-------------------------'
         console.log sakeData.sakes[29].maker_name
         msg.send '-------------------------'
-        msg.send sakeData.sakes.length + "-------------------" + itemData.Items.length #lengthはindex
+        # msg.send sakeData.sakes.length + "-------------------" + itemData.Items.length #lengthはindex
         msg.send sakeData.sakes[29].sake_name
         msg.send sakeData.sakes[29].maker_name + sakeData.sakes[29].maker_url
         msg.send itemData.Items[0].Item.imageUrl
