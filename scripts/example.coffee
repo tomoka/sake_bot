@@ -73,20 +73,19 @@ module.exports = (robot) ->
           msg.send "Ran into an error parsing JSON :("
           return
 
-
-        console.log '-------------------------'
-        console.log sakeData.sakes.length
-        console.log '-------------------------'
-        console.log sakeData.sakes[29]
-        console.log '-------------------------'
-        console.log sakeData.sakes[29].maker_name
-        msg.send '-------------------------'
-        msg.send "#{sakeData.sakes.length}" + "-------------------" + "#{itemData.Items.length}" #lengthはindex
-        msg.send sakeData.sakes[29].sake_name
-        msg.send sakeData.sakes[29].maker_name + sakeData.sakes[29].maker_url
-        msg.send itemData.Items[0].Item.imageUrl
-        msg.send "商品画像検索結果" + itemData.Items[0].Item.imageUrl
-        msg.send '-------------------------'
+          console.log '-------------------------'
+          console.log sakeData.sakes.length
+          console.log '-------------------------'
+          console.log sakeData.sakes[29]
+          console.log '-------------------------'
+          console.log sakeData.sakes[29].maker_name
+          msg.send '-------------------------'
+          msg.send "#{sakeData.sakes.length}" + "-------------------" + "#{itemData.Items.length}" #lengthはindex
+          msg.send sakeData.sakes[29].sake_name
+          msg.send sakeData.sakes[29].maker_name + sakeData.sakes[29].maker_url
+          msg.send itemData.Items[0].Item.imageUrl
+          msg.send "商品画像検索結果" + itemData.Items[0].Item.imageUrl
+          msg.send '-------------------------'
 
   # @で呼びかけてhogeで反応
   # robot.respond /hoge/i, (msg) -> msg.send "fuga"
