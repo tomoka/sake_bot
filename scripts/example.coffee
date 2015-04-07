@@ -58,20 +58,21 @@ module.exports = (robot) ->
 
           sakeItemKeyword = encodeURIComponent "#{sakeData.sakes[29].maker_name}"
           sakeItemUrl = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222?format=json&keyword=" + sakeItemKeyword + "&imageFlag=1&applicationId=1058730448257396288"
+          
+          robot.http(sakeItemUrl)
+            .header('Accept', 'application/json')
+            .get() (itemErr, itemRes, itemBody) ->
+
+              itemData = null
+              try
+                itemData = JSON.parse (itemBody)
+              catch error
+                msg.send "Ran into an error parsing itemData JSON :("
+                return
         catch error
           msg.send "Ran into an error parsing JSON :("
           return
-          
-    robot.http(sakeItemUrl)
-      .header('Accept', 'application/json')
-      .get() (itemErr, itemRes, itemBody) ->
 
-        itemData = null
-        try
-          itemData = JSON.parse (itemBody)
-        catch error
-          msg.send "Ran into an error parsing itemData JSON :("
-          return
 
         console.log '-------------------------'
         console.log sakeData.sakes.length
