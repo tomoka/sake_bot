@@ -58,18 +58,18 @@ module.exports = (robot) ->
           console.log sakeData.sakes[29].maker_name
           console.log '-------------------------'
 
+          robot.http(sakeItemUrl)
+            .header('Accept', 'application/json')
+            .get() (itemErr, itemRes, itemBody) ->
+
             try
-              robot.http(sakeItemUrl)
-                .header('Accept', 'application/json')
-                .get() (itemErr, itemRes, itemBody) ->
+              itemData = null
+              itemData = JSON.parse (itemBody)
 
-                  itemData = null
-                  itemData = JSON.parse (itemBody)
-
-                  console.log '-------------itemBody------------'
-                  console.log itemBody
-                  console.log '-------------itemBody------------'
-            catch error
+              console.log '-------------itemBody------------'
+              console.log itemBody
+              console.log '-------------itemBody------------'
+            catch err
               msg.send "Ran into an error parsing item JSON :("
               return
         catch error
