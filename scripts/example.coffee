@@ -58,7 +58,7 @@ module.exports = (robot) ->
 
           sakeItemKeyword = encodeURIComponent "#{sakeData.sakes[29].maker_name}"
           sakeItemUrl = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222?format=json&keyword=" + sakeItemKeyword + "&imageFlag=1&applicationId=1058730448257396288"
-          
+
           robot.http(sakeItemUrl)
             .header('Accept', 'application/json')
             .get() (itemErr, itemRes, itemBody) ->
@@ -81,7 +81,7 @@ module.exports = (robot) ->
         console.log '-------------------------'
         console.log sakeData.sakes[29].maker_name
         msg.send '-------------------------'
-        msg.send "#{data.sakes.length}" #lengthはindex
+        msg.send "#{sakeData.sakes.length}" #lengthはindex
         msg.send sakeData.sakes[29].sake_name
         msg.send sakeData.sakes[29].maker_name + sakeData.sakes[29].maker_url
         msg.send itemData.Items[0].Item.imageUrl
