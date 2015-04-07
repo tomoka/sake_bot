@@ -52,26 +52,28 @@ module.exports = (robot) ->
         sakeData = null
         try
           sakeData = JSON.parse (sakeBody)
+          sakeItemKeyword = encodeURIComponent sakeData.sakes[29].maker_name
+          sakeItemUrl = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222?format=json&keyword=" + sakeItemKeyword + "&imageFlag=1&applicationId=1058730448257396288"
           console.log '-------------------------'
           console.log sakeData.sakes[29].maker_name
           console.log '-------------------------'
 
-          sakeItemKeyword = encodeURIComponent sakeData.sakes[29].maker_name
-          sakeItemUrl = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222?format=json&keyword=" + sakeItemKeyword + "&imageFlag=1&applicationId=1058730448257396288"
+            try
+              robot.http(sakeItemUrl)
+                .header('Accept', 'application/json')
+                .get() (itemErr, itemRes, itemBody) ->
 
-          robot.http(sakeItemUrl)
-            .header('Accept', 'application/json')
-            .get() (itemErr, itemRes, itemBody) ->
+                  itemData = null
+                  itemData = JSON.parse (itemBody)
 
-              itemData = null
-              itemData = JSON.parse (itemBody)
-
-              console.log '-------------itemBody------------'
-              console.log itemBody
-              console.log '-------------itemBody------------'
-
+                  console.log '-------------itemBody------------'
+                  console.log itemBody
+                  console.log '-------------itemBody------------'
+            catch error
+              msg.send "Ran into an error parsing item JSON :("
+              return
         catch error
-          msg.send "Ran into an error parsing JSON :("
+          msg.send "Ran into an error parsing sake JSON :("
           return
 
         console.log '-------------------------'
