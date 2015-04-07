@@ -41,7 +41,7 @@ module.exports = (robot) ->
     sakeUrl = "http://www.sakenote.com/api/v1/sakes?token=95f9b2288f8acd7eb2cf190af7cfbc223df5823c&prefecture_code=" + sakeNum
     robot.http(sakeUrl)
       .header('Accept', 'application/json')
-      .get() (err, res, body) ->
+      .get() (sakeErr, sakeRes, sakeBody) ->
         # console.log err
         # console.log res
         # console.log body
@@ -49,24 +49,34 @@ module.exports = (robot) ->
         #  msg.send "Didn't get back JSON :("
         #  return
 
-        data = null
+        sakeData = null
         try
-          data = JSON.parse (body)
+          sakeData = JSON.parse (sakeBody)
+          sakeItemKeyword = encodeURIComponent sakeData.sakes[29].maker_name
+          sakeItemUrl = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222?format=json&keyword=" + sakeItemKeyword + "&imageFlag=1&applicationId=1058730448257396288"
+            robot.http(sakeItemUrl)
+              .header('Accept', 'application/json')
+              .get() (itemErr, itemRes, itemBody) ->
+
+                itemData = null
+                try
+                  itemData = JSON.parse (itemBody)
+                catch error
+                  msg.send "Ran into an error parsing itemData JSON :("
+                  return
         catch error
           msg.send "Ran into an error parsing JSON :("
           return
         console.log '-------------------------'
-        console.log data.sakes.length
+        console.log sakeData.sakes.length
         console.log '-------------------------'
-        console.log data.sakes[29]
+        console.log sakeData.sakes[29]
         console.log '-------------------------'
-        console.log data.sakes[29].maker_name
-        sakeItemKeyword = encodeURIComponent data.sakes[29].maker_name
-        sakeItemUrl = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222?format=json&keyword=" + sakeItemKeyword + "&imageFlag=1&applicationId=1058730448257396288"
+        console.log sakeData.sakes[29].maker_name
         msg.send '-------------------------'
         msg.send "#{data.sakes.length}" #lengthはindex
-        msg.send data.sakes[29].sake_name
-        msg.send data.sakes[29].maker_name + data.sakes[29].maker_url
+        msg.send sakeData.sakes[29].sake_name
+        msg.send sakeData.sakes[29].maker_name + sakeData.sakes[29].maker_url
         msg.send "検索結果" + sakeItemUrl
         msg.send '-------------------------'
 
