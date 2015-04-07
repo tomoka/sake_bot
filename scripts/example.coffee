@@ -39,7 +39,6 @@ module.exports = (robot) ->
         if arraySakePrefectureCode[index] is message
           sakeNum = index + 1
     sakeUrl = "http://www.sakenote.com/api/v1/sakes?token=95f9b2288f8acd7eb2cf190af7cfbc223df5823c&prefecture_code=" + sakeNum
-
     robot.http(sakeUrl)
       .header('Accept', 'application/json')
       .get() (err, res, body) ->
@@ -62,10 +61,13 @@ module.exports = (robot) ->
         console.log data.sakes[29]
         console.log '-------------------------'
         console.log data.sakes[29].maker_name
+        sakeItemKeyword = encodeURIComponent data.sakes[29].maker_name
+        sakeItemUrl = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222?format=json&keyword=" + sakeItemKeyword + "&imageFlag=1&applicationId=1058730448257396288"
         msg.send '-------------------------'
         msg.send "#{data.sakes.length}" #lengthはindex
         msg.send data.sakes[29].sake_name
         msg.send data.sakes[29].maker_name + data.sakes[29].maker_url
+        msg.send "検索結果" + sakeItemUrl
         msg.send '-------------------------'
 
   # @で呼びかけてhogeで反応
