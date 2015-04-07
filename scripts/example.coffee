@@ -55,6 +55,11 @@ module.exports = (robot) ->
         catch error
           msg.send "Ran into an error parsing JSON :("
           return
+          
+    console.log '-------------------------'
+    console.log sakeData.sakes[29].maker_name
+    console.log '-------------------------'
+
     sakeItemKeyword = encodeURIComponent "#{sakeData.sakes[29].maker_name}"
     sakeItemUrl = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222?format=json&keyword=" + sakeItemKeyword + "&imageFlag=1&applicationId=1058730448257396288"
     robot.http(sakeItemUrl)
