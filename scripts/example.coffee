@@ -77,7 +77,8 @@ module.exports = (robot) ->
         msg.send "#{data.sakes.length}" #lengthはindex
         msg.send sakeData.sakes[29].sake_name
         msg.send sakeData.sakes[29].maker_name + sakeData.sakes[29].maker_url
-        msg.send "検索結果" + sakeItemUrl
+        msg.send itemData.Items[0].Item.imageUrl
+        msg.send "検索結果" + itemData.Items[0].Item.imageUrl
         msg.send '-------------------------'
 
   # @で呼びかけてhogeで反応
