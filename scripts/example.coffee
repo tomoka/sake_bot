@@ -62,8 +62,8 @@ module.exports = (robot) ->
             .header('Accept', 'application/json')
             .get() (itemErr, itemRes, itemBody) ->
 
+            itemData = null
             try
-              itemData = null
               itemData = JSON.parse (itemBody)
 
               console.log '-------------itemBody------------'
