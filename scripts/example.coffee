@@ -52,11 +52,12 @@ module.exports = (robot) ->
         sakeData = null
         try
           sakeData = JSON.parse (sakeBody)
+          sakeRandom = Math.floor(Math.random() * sakeData.sakes.length) + 1
           sakeItemKeyword = encodeURIComponent "日本酒　#{sakeData.sakes[sakeRandom].sake_name}"
           sakeMakerAddress = encodeURIComponent "#{arraySakePrefectureCode[sakeRandom]}"
-          sakeItemUrl = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222?format=json&keyword=" + sakeItemKeyword + "&maker_address=#{sakeMakerAddress}&imageFlag=1&applicationId=1058730448257396288"
           console.log sakeMakerAddress
           console.log sakeItemUrl
+          sakeItemUrl = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222?format=json&keyword=" + sakeItemKeyword + "&maker_address=#{sakeMakerAddress}&imageFlag=1&applicationId=1058730448257396288"
 
           robot.http(sakeItemUrl)
             .header('Accept', 'application/json')
@@ -65,7 +66,6 @@ module.exports = (robot) ->
               itemData = null
               try
                 itemData = JSON.parse (itemBody)
-                sakeRandom = Math.floor(Math.random() * sakeData.sakes.length) + 1
                 console.log sakeData.sakes[sakeRandom].sake_name
                 msg.send itemData.Items[0].Item.itemName + "(#{sakeData.sakes[sakeRandom].sake_furigana})"
                 msg.send sakeData.sakes[sakeRandom].maker_name + sakeData.sakes[sakeRandom].maker_url
