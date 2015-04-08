@@ -74,23 +74,23 @@ module.exports = (robot) ->
               catch err
                 msg.send "Ran into an error parsing item JSON :("
                 return
+              console.log '-----------sakeData1--------------'
+              console.log sakeData.sakes.length
+              console.log itemData.Items.length
+              console.log '-------------sakeData2------------'
+              console.log sakeData.sakes[29]
+              console.log '-----------sakeData3--------------'
+              msg.send '-------------sakeData4------------'
+              # msg.send sakeData.sakes.length + "-------------------" + itemData.Items.length #lengthはindex
+              msg.send sakeData.sakes[29].sake_name
+              msg.send sakeData.sakes[29].maker_name + sakeData.sakes[29].maker_url
+              msg.send itemData.Items[0]
+              msg.send "商品画像検索結果-----#{itemData.Items[0].Item.imageUrl}"
+              msg.send '----------商品画像検索結果end---------------'
         catch error
           msg.send "Ran into an error parsing sake JSON :("
           return
 
-        console.log '-----------sakeData1--------------'
-        console.log sakeData.sakes.length
-        console.log itemData.Items.length
-        console.log '-------------sakeData2------------'
-        console.log sakeData.sakes[29]
-        console.log '-----------sakeData3--------------'
-        msg.send '-------------sakeData4------------'
-        # msg.send sakeData.sakes.length + "-------------------" + itemData.Items.length #lengthはindex
-        msg.send sakeData.sakes[29].sake_name
-        msg.send sakeData.sakes[29].maker_name + sakeData.sakes[29].maker_url
-        msg.send itemData.Items[0]
-        msg.send "商品画像検索結果-----#{itemData.Items[0].Item.imageUrl}"
-        msg.send '----------商品画像検索結果end---------------'
 
   # @で呼びかけてhogeで反応
   # robot.respond /hoge/i, (msg) -> msg.send "fuga"
