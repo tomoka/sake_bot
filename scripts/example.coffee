@@ -54,9 +54,9 @@ module.exports = (robot) ->
           sakeData = JSON.parse (sakeBody)
           sakeItemKeyword = encodeURIComponent "日本酒　#{sakeData.sakes[sakeNum].sake_name}"
           sakeItemUrl = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222?format=json&keyword=" + sakeItemKeyword + "&imageFlag=1&applicationId=1058730448257396288"
-          console.log '-----------sakeData--------------'
-          console.log sakeData.sakes[sakeNum].sake_name
-          console.log '------------sakeData-------------'
+          # console.log '-----------sakeData--------------'
+          # console.log sakeData.sakes[sakeNum].sake_name
+          # console.log '------------sakeData-------------'
 
           robot.http(sakeItemUrl)
             .header('Accept', 'application/json')
@@ -65,28 +65,27 @@ module.exports = (robot) ->
               itemData = null
               try
                 itemData = JSON.parse (itemBody)
-                console.log '-------------itemData1****------------'
-                console.log itemData
-                console.log '-------------itemData1------------'
-                console.log '-------------itemData2*****------------'
-                console.log itemData.count
-                console.log '-------------itemData2------------'
+                # console.log '-------------itemData1****------------'
+                # console.log itemData
+                # console.log '-------------itemData1------------'
+                # console.log '-------------itemData2*****------------'
+                # console.log itemData.count
+                # console.log '-------------itemData2------------'
               catch err
                 msg.send "Ran into an error parsing item JSON :("
                 return
-              console.log '-----------sakeData1--------------'
-              console.log sakeData.sakes.length
-              console.log itemData.Items.length
-              console.log '-------------sakeData2------------'
-              console.log sakeData.sakes[sakeNum]
-              console.log '-----------sakeData3--------------'
-              msg.send '-------------sakeData4------------'
+              # console.log '-----------sakeData1--------------'
+              # console.log sakeData.sakes.length
+              # console.log itemData.Items.length
+              # console.log '-------------sakeData2------------'
+              # console.log sakeData.sakes[sakeNum]
+              # console.log '-----------sakeData3--------------'
+              # msg.send '-------------sakeData4------------'
               # msg.send sakeData.sakes.length + "-------------------" + itemData.Items.length #lengthはindex
               msg.send sakeData.sakes[sakeNum].sake_name + "(#{sakeData.sakes[sakeNum].sake_furigana})"
               msg.send sakeData.sakes[sakeNum].maker_name + sakeData.sakes[sakeNum].maker_url
-              msg.send "商品検索-----#{itemData.Items[0].Item.itemName}"
-              msg.send "商品画像-----#{itemData.Items[0].Item.mediumImageUrls[0].imageUrl}"
-              msg.send '----------商品画像検索結果end---------------'
+              msg.send itemData.Items[0].Item.itemName} + {itemData.Items[0].Item.mediumImageUrls[0].imageUrl
+              # msg.send '----------商品画像検索結果end---------------'
         catch error
           msg.send "Ran into an error parsing sake JSON :("
           return
