@@ -66,8 +66,8 @@ module.exports = (robot) ->
               try
                 itemData = JSON.parse (itemBody)
                 console.log '-------------itemData------------'
-                console.log itemData.Items[0].Item[itemName]
-                console.log itemData.Items[0].Item[itemCaption]
+                console.log itemData.Items[0].itemName
+                console.log itemData.Items[0].itemCaption
                 console.log '-------------itemData------------'
               catch err
                 msg.send "Ran into an error parsing item JSON :("
