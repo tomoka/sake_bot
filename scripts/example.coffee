@@ -63,15 +63,15 @@ module.exports = (robot) ->
             .get() (itemErr, itemRes, itemBody) ->
 
             itemData = null
-            try
-              itemData = JSON.parse (itemBody)
+              try
+                itemData = JSON.parse (itemBody)
 
-              console.log '-------------itemBody------------'
-              console.log itemBody
-              console.log '-------------itemBody------------'
-            catch err
-              msg.send "Ran into an error parsing item JSON :("
-              return
+                console.log '-------------itemBody------------'
+                console.log itemBody
+                console.log '-------------itemBody------------'
+              catch err
+                msg.send "Ran into an error parsing item JSON :("
+                return
         catch error
           msg.send "Ran into an error parsing sake JSON :("
           return
