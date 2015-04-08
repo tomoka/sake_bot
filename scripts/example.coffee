@@ -84,7 +84,7 @@ module.exports = (robot) ->
               # msg.send sakeData.sakes.length + "-------------------" + itemData.Items.length #lengthはindex
               msg.send sakeData.sakes[sakeNum].sake_name + "(#{sakeData.sakes[sakeNum].sake_furigana})"
               msg.send sakeData.sakes[sakeNum].maker_name + sakeData.sakes[sakeNum].maker_url
-              msg.send itemData.Items[0].Item.itemName} + itemData.Items[0].Item.mediumImageUrls[0].imageUrl
+              msg.send "#{itemData.Items[0].Item.itemName}　#{itemData.Items[0].Item.mediumImageUrls[0].imageUrl}"
               msg.send '----------商品画像検索結果end---------------'
         catch error
           msg.send "Ran into an error parsing sake JSON :("
