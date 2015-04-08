@@ -53,8 +53,12 @@ module.exports = (robot) ->
 
                 if ! sakeData.sakes[sakeRandom].maker_url is undefined
                   msg.send sakeData.sakes[sakeRandom].sake_name + "(#{sakeData.sakes[sakeRandom].sake_furigana})" + sakeData.sakes[sakeRandom].maker_name + "(#{sakeData.sakes[sakeRandom].maker_url})"
+                else 
+                  msg.send sakeData.sakes[sakeRandom].sake_name + "(#{sakeData.sakes[sakeRandom].sake_furigana})" + sakeData.sakes[sakeRandom].maker_name
+                
                 if ! itemData.Items[0].Item.mediumImageUrls[0].imageUrl is undefined
                   msg.send itemData.Items[0].Item.mediumImageUrls[0].imageUrl
+                
               catch err
                 msg.send "Ran into an error parsing item JSON :("
                 return
