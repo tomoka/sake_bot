@@ -49,7 +49,7 @@ module.exports = (robot) ->
               try
                 itemData = JSON.parse (itemBody)
                 console.log sakeData.sakes[sakeRandom].sake_name
-                msg.send itemData.Items[0].Item.itemName + "(#{sakeData.sakes[sakeRandom].sake_furigana})"
+                msg.send sakeData.sakes[sakeRandom].sake_name + "(#{sakeData.sakes[sakeRandom].sake_furigana})"
                 msg.send sakeData.sakes[sakeRandom].maker_name + sakeData.sakes[sakeRandom].maker_url
                 msg.send "#{itemData.Items[0].Item.itemName}" +　( itemData.Items[0].Item.mediumImageUrls[0].imageUrl )
               catch err
