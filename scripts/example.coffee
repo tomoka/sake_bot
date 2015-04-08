@@ -18,6 +18,7 @@ module.exports = (robot) ->
     for value, index in arraySakePrefectureCode
         if arraySakePrefectureCode[index] is message
           sakeNum = index + 1
+          sakeIndex = index
     sakeUrl = "http://www.sakenote.com/api/v1/sakes?token=95f9b2288f8acd7eb2cf190af7cfbc223df5823c&prefecture_code=" + sakeNum
     robot.http(sakeUrl)
       .header('Accept', 'application/json')
@@ -34,8 +35,8 @@ module.exports = (robot) ->
           sakeData = JSON.parse (sakeBody)
           sakeRandom = Math.floor(Math.random() * sakeData.sakes.length) + 1
 
-          sakeItemKeyword = encodeURIComponent "日本酒　#{sakeData.sakes[index].sake_name}"
-          sakeMakerAddress = encodeURIComponent "#{arraySakePrefectureCode[index]}"
+          sakeItemKeyword = encodeURIComponent "日本酒　#{sakeData.sakes[sakeRandom].sake_name}"
+          sakeMakerAddress = encodeURIComponent "#{arraySakePrefectureCode[sakeIndex]}"
           console.log sakeMakerAddress
           console.log sakeItemKeyword
           sakeItemUrl = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222?format=json&keyword=" + sakeItemKeyword + "&maker_address=#{sakeMakerAddress}&imageFlag=1&applicationId=1058730448257396288"
