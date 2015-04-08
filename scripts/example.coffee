@@ -52,12 +52,13 @@ module.exports = (robot) ->
         sakeData = null
         try
           sakeData = JSON.parse (sakeBody)
-          sakeItemKeyword = encodeURIComponent "日本酒　#{sakeData.sakes[sakeNum].sake_name}"
-          sakeMakerAddress = encodeURIComponent "#{arraySakePrefectureCode[sakeNum]}"
+          sakeItemKeyword = encodeURIComponent "日本酒　#{sakeData.sakes[sakeRandom].sake_name}"
+          sakeMakerAddress = encodeURIComponent "#{arraySakePrefectureCode[sakeRandom]}"
           sakeItemUrl = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222?format=json&keyword=" + sakeItemKeyword + "&maker_address=#{sakeMakerAddress}&imageFlag=1&applicationId=1058730448257396288"
           console.log '-----------sakeData--------------'
-          console.log sakeData.sakes[sakeNum].sake_name
+          console.log sakeData.sakes[sakeRandom].sake_name
           console.log '------------sakeData-------------'
+          sakeRandom = Math.floor(Math.random() * sakeData.sakes.length) + 1
 
           robot.http(sakeItemUrl)
             .header('Accept', 'application/json')
@@ -79,12 +80,12 @@ module.exports = (robot) ->
               console.log sakeData.sakes.length
               console.log itemData.Items.length
               console.log '-------------sakeData2------------'
-              console.log sakeData.sakes[sakeNum]
+              console.log sakeData.sakes[sakeRandom]
               console.log '-----------sakeData3--------------'
               msg.send '-------------sakeData4------------'
               # msg.send sakeData.sakes.length + "-------------------" + itemData.Items.length #lengthはindex
-              msg.send itemData.Items[0].Item.itemName + "(#{sakeData.sakes[sakeNum].sake_furigana})"
-              msg.send sakeData.sakes[sakeNum].maker_name + sakeData.sakes[sakeNum].maker_url
+              msg.send itemData.Items[0].Item.itemName + "(#{sakeData.sakes[sakeRandom].sake_furigana})"
+              msg.send sakeData.sakes[sakeRandom].maker_name + sakeData.sakes[sakeRandom].maker_url
               msg.send "#{itemData.Items[0].Item.itemName}" +　( itemData.Items[0].Item.mediumImageUrls[0].imageUrl )
               msg.send '----------商品画像検索結果end---------------'
         catch error
