@@ -52,10 +52,10 @@ module.exports = (robot) ->
         sakeData = null
         try
           sakeData = JSON.parse (sakeBody)
-          sakeItemKeyword = encodeURIComponent sakeData.sakes[29].maker_name
+          sakeItemKeyword = encodeURIComponent sakeData.sakes[29].sake_name
           sakeItemUrl = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222?format=json&keyword=" + sakeItemKeyword + "&imageFlag=1&applicationId=1058730448257396288"
           console.log '-------------------------'
-          console.log sakeData.sakes[29].maker_name
+          console.log sakeData.sakes[29].sake_name
           console.log '-------------------------'
 
           robot.http(sakeItemUrl)
