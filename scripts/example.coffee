@@ -55,8 +55,8 @@ module.exports = (robot) ->
           sakeItemKeyword = encodeURIComponent "日本酒　#{sakeData.sakes[sakeRandom].sake_name}"
           sakeMakerAddress = encodeURIComponent "#{arraySakePrefectureCode[sakeRandom]}"
           sakeItemUrl = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222?format=json&keyword=" + sakeItemKeyword + "&maker_address=#{sakeMakerAddress}&imageFlag=1&applicationId=1058730448257396288"
-                console.log sakeMakerAddress
-                console.log sakeItemUrl
+          console.log sakeMakerAddress
+          console.log sakeItemUrl
 
           robot.http(sakeItemUrl)
             .header('Accept', 'application/json')
