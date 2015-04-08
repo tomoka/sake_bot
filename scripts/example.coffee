@@ -50,8 +50,8 @@ module.exports = (robot) ->
                 itemData = JSON.parse (itemBody)
                 console.log sakeData.sakes[sakeRandom].sake_name
                 msg.send sakeData.sakes[sakeRandom].sake_name + "(#{sakeData.sakes[sakeRandom].sake_furigana})"
+                msg.send itemData.Items[0].Item.mediumImageUrls[0].imageUrl
                 msg.send sakeData.sakes[sakeRandom].maker_name + sakeData.sakes[sakeRandom].maker_url
-                msg.send "#{itemData.Items[0].Item.itemName}" +　( itemData.Items[0].Item.mediumImageUrls[0].imageUrl )
               catch err
                 msg.send "Ran into an error parsing item JSON :("
                 return
