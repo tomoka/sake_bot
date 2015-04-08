@@ -55,11 +55,6 @@ module.exports = (robot) ->
           sakeItemKeyword = encodeURIComponent "日本酒　#{sakeData.sakes[sakeRandom].sake_name}"
           sakeMakerAddress = encodeURIComponent "#{arraySakePrefectureCode[sakeRandom]}"
           sakeItemUrl = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222?format=json&keyword=" + sakeItemKeyword + "&maker_address=#{sakeMakerAddress}&imageFlag=1&applicationId=1058730448257396288"
-          console.log '-----------sakeData--------------'
-          console.log sakeData.sakes.length
-          console.log '------------sakeData-------------'
-          sakeRandom = Math.floor(Math.random() * sakeData.sakes.length) + 1
-          console.log sakeData.sakes[sakeRandom].sake_name
 
           robot.http(sakeItemUrl)
             .header('Accept', 'application/json')
@@ -68,27 +63,14 @@ module.exports = (robot) ->
               itemData = null
               try
                 itemData = JSON.parse (itemBody)
-                console.log '-------------itemData1****------------'
-                console.log itemData
-                console.log '-------------itemData1------------'
-                console.log '-------------itemData2*****------------'
-                console.log itemData.count
-                console.log '-------------itemData2------------'
+                sakeRandom = Math.floor(Math.random() * sakeData.sakes.length) + 1
+                console.log sakeData.sakes[sakeRandom].sake_name
               catch err
                 msg.send "Ran into an error parsing item JSON :("
                 return
-              console.log '-----------sakeData1--------------'
-              console.log sakeData.sakes.length
-              console.log itemData.Items.length
-              console.log '-------------sakeData2------------'
-              console.log sakeData.sakes[sakeRandom]
-              console.log '-----------sakeData3--------------'
-              msg.send '-------------sakeData4------------'
-              # msg.send sakeData.sakes.length + "-------------------" + itemData.Items.length #lengthはindex
               msg.send itemData.Items[0].Item.itemName + "(#{sakeData.sakes[sakeRandom].sake_furigana})"
               msg.send sakeData.sakes[sakeRandom].maker_name + sakeData.sakes[sakeRandom].maker_url
               msg.send "#{itemData.Items[0].Item.itemName}" +　( itemData.Items[0].Item.mediumImageUrls[0].imageUrl )
-              msg.send '----------商品画像検索結果end---------------'
         catch error
           msg.send "Ran into an error parsing sake JSON :("
           return
