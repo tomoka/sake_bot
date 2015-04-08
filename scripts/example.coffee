@@ -72,6 +72,10 @@ module.exports = (robot) ->
               catch err
                 msg.send "Ran into an error parsing item JSON :("
                 return
+        catch error
+          msg.send "Ran into an error parsing sake JSON :("
+          return
+
         console.log '-----------sakeData1--------------'
         console.log sakeData.sakes.length
         console.log itemData.Items.length
@@ -85,10 +89,6 @@ module.exports = (robot) ->
         msg.send itemData.Items[0]
         msg.send "商品画像検索結果-----#{itemData.Items[0].Item.imageUrl}"
         msg.send '----------商品画像検索結果end---------------'
-
-        catch error
-          msg.send "Ran into an error parsing sake JSON :("
-          return
 
   # @で呼びかけてhogeで反応
   # robot.respond /hoge/i, (msg) -> msg.send "fuga"
