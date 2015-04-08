@@ -65,12 +65,12 @@ module.exports = (robot) ->
                 itemData = JSON.parse (itemBody)
                 sakeRandom = Math.floor(Math.random() * sakeData.sakes.length) + 1
                 console.log sakeData.sakes[sakeRandom].sake_name
+                msg.send itemData.Items[0].Item.itemName + "(#{sakeData.sakes[sakeRandom].sake_furigana})"
+                msg.send sakeData.sakes[sakeRandom].maker_name + sakeData.sakes[sakeRandom].maker_url
+                msg.send "#{itemData.Items[0].Item.itemName}" +　( itemData.Items[0].Item.mediumImageUrls[0].imageUrl )
               catch err
                 msg.send "Ran into an error parsing item JSON :("
                 return
-              msg.send itemData.Items[0].Item.itemName + "(#{sakeData.sakes[sakeRandom].sake_furigana})"
-              msg.send sakeData.sakes[sakeRandom].maker_name + sakeData.sakes[sakeRandom].maker_url
-              msg.send "#{itemData.Items[0].Item.itemName}" +　( itemData.Items[0].Item.mediumImageUrls[0].imageUrl )
         catch error
           msg.send "Ran into an error parsing sake JSON :("
           return
