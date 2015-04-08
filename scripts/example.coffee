@@ -67,7 +67,7 @@ module.exports = (robot) ->
                 itemData = JSON.parse (itemBody)
                 console.log '-------------itemData------------'
                 console.log itemData
-                console.log itemData.Items[0].itemCaption
+                console.log itemData.Items[10].catchcopy
                 console.log '-------------itemData------------'
               catch err
                 msg.send "Ran into an error parsing item JSON :("
@@ -87,7 +87,7 @@ module.exports = (robot) ->
         msg.send sakeData.sakes[29].sake_name
         msg.send sakeData.sakes[29].maker_name + sakeData.sakes[29].maker_url
         msg.send itemData.Items[0]
-        msg.send "商品画像検索結果" + "#{itemData.Items[0].Item.imageUrl}"
+        msg.send "商品画像検索結果-----#{itemData.Items[0].Item.imageUrl}"
         msg.send '----------商品画像検索結果end---------------'
 
   # @で呼びかけてhogeで反応
