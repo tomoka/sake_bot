@@ -65,7 +65,6 @@ module.exports = (robot) ->
             itemData = null
             try
               itemData = JSON.parse (itemBody)
-
               console.log '-------------itemBody------------'
               console.log itemBody
               console.log '-------------itemBody------------'
