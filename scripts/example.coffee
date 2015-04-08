@@ -66,7 +66,7 @@ module.exports = (robot) ->
               try
                 itemData = JSON.parse (itemBody)
                 console.log '-------------itemData------------'
-                console.log itemData.Items[0].itemName
+                console.log itemData
                 console.log itemData.Items[0].itemCaption
                 console.log '-------------itemData------------'
               catch err
@@ -78,10 +78,10 @@ module.exports = (robot) ->
 
         console.log '-----------sakeData1--------------'
         console.log sakeData.sakes.length
+        console.log itemData.Items.length
         console.log '-------------sakeData2------------'
         console.log sakeData.sakes[29]
         console.log '-----------sakeData3--------------'
-        console.log sakeData.sakes[29].maker_name
         msg.send '-------------sakeData4------------'
         # msg.send sakeData.sakes.length + "-------------------" + itemData.Items.length #lengthはindex
         msg.send sakeData.sakes[29].sake_name
