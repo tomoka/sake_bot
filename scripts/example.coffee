@@ -57,7 +57,7 @@ module.exports = (robot) ->
                   msg.send sakeData.sakes[sakeRandom].sake_name + "(#{sakeData.sakes[sakeRandom].sake_furigana})" + sakeData.sakes[sakeRandom].maker_name
                 
                 if ! itemData.Items[0].Item.mediumImageUrls[0].imageUrl is null
-                  msg.send itemData.Items[0].Item.mediumImageUrls[0].imageUrl
+                  msg.send sakeData.sakes[sakeRandom].url
                 else 
                   msg.send itemData.Items[0].Item.mediumImageUrls[0].imageUrl
 
