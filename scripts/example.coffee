@@ -51,12 +51,12 @@ module.exports = (robot) ->
                 console.log sakeData.sakes[sakeRandom].sake_name
                 msg.send message + "の日本酒"
 
-                if ! sakeData.sakes[sakeRandom].maker_url is undefined
+                if ! sakeData.sakes[sakeRandom].maker_url is undefined or null
                   msg.send sakeData.sakes[sakeRandom].sake_name + "(#{sakeData.sakes[sakeRandom].sake_furigana})" + sakeData.sakes[sakeRandom].maker_name + "(#{sakeData.sakes[sakeRandom].maker_url})"
                 else 
                   msg.send sakeData.sakes[sakeRandom].sake_name + "(#{sakeData.sakes[sakeRandom].sake_furigana})" + sakeData.sakes[sakeRandom].maker_name
                 
-                if ! itemData.Items[0].Item.mediumImageUrls[0].imageUrl is undefined
+                if ! itemData.Items[0].Item.mediumImageUrls[0].imageUrl is undefined or null
                   msg.send itemData.Items[0].Item.mediumImageUrls[0].imageUrl
                 
               catch err
