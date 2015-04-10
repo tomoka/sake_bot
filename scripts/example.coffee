@@ -63,7 +63,7 @@ module.exports = (robot) ->
 
               catch err
                 msg.send sakeData.sakes[sakeRandom].url
-                msg.send "Ran into an error parsing item JSON :("
+                # msg.send "Ran into an error parsing item JSON :("
                 return
         catch error
           msg.send "Ran into an error parsing sake JSON :("
