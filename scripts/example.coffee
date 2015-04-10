@@ -62,6 +62,7 @@ module.exports = (robot) ->
                   msg.send itemData.Items[0].Item.mediumImageUrls[0].imageUrl
 
               catch err
+                msg.send sakeData.sakes[sakeRandom].url
                 msg.send "Ran into an error parsing item JSON :("
                 return
         catch error
