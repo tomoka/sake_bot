@@ -58,7 +58,9 @@ module.exports = (robot) ->
                 
                 if ! itemData.Items[0].Item.mediumImageUrls[0].imageUrl is null
                   msg.send itemData.Items[0].Item.mediumImageUrls[0].imageUrl
-                
+                else 
+                  msg.send itemData.Items[0].Item.mediumImageUrls[0].imageUrl
+
               catch err
                 msg.send "Ran into an error parsing item JSON :("
                 return
