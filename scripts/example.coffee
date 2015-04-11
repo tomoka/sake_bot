@@ -63,9 +63,9 @@ module.exports = (robot) ->
                 itemData = JSON.parse (itemBody)
                 console.log sakeData.sakes[sakeRandom].sake_name
                 if osusumeFlag is yes
-                  msg.send message + "をランダムに紹介します！"
+                  msg.send message + "をランダムに紹介します！\n"+ arraySakePrefectureCode[sakeIndex] + "のお酒"
                 else
-                  msg.send message + "の日本酒をランダムに紹介します！\n #{arraySakePrefectureCode[sakeIndex]}のお酒"
+                  msg.send message + "の日本酒をランダムに紹介します！"
 
                 if ! sakeData.sakes[sakeRandom].maker_url is undefined or null
                   msg.send sakeData.sakes[sakeRandom].sake_name + "(#{sakeData.sakes[sakeRandom].sake_furigana})\n" + sakeData.sakes[sakeRandom].maker_name + "(#{sakeData.sakes[sakeRandom].maker_url})"
