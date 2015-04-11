@@ -25,29 +25,6 @@ module.exports = (robot) ->
         if arraySakePrefectureCode[index] is message
           sakeNum = index + 1
           sakeIndex = index
-        else if arraySakePrefectureCodeMin[index] is message
-          sakeNum = index + 1
-          sakeIndex = index
-        else if arraySakePrefectureCodeKana[index] is message
-          sakeNum = index + 1
-          sakeIndex = index
-        else if arraySakePrefectureCodeKanaMin[index] is message
-          sakeNum = index + 1
-          sakeIndex = index
-        else if arraySakePrefectureCodeRoma[index] is message
-          sakeNum = index + 1
-          sakeIndex = index
-        else if arraySakePrefectureCodeRomaMin[index] is message
-          sakeNum = index + 1
-          sakeIndex = index
-        else if "日本酒" is message
-          osusumeFlag = true
-          sakeNum = Math.floor(Math.random() * 47) + 1
-          sakeIndex = index
-        else if "おすすめ" is message
-          osusumeFlag = true
-          sakeNum = Math.floor(Math.random() * 47) + 1
-          sakeIndex = index
     sakeUrl = "http://www.sakenote.com/api/v1/sakes?token=95f9b2288f8acd7eb2cf190af7cfbc223df5823c&prefecture_code=" + sakeNum
     robot.http(sakeUrl)
       .header('Accept', 'application/json')
