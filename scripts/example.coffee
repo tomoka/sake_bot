@@ -65,7 +65,7 @@ module.exports = (robot) ->
                 if osusumeFlag is yes
                   msg.send message + "をランダムに紹介します！"
                 else
-                  msg.send message + "の日本酒をランダムに紹介します！"
+                  msg.send message + "の日本酒をランダムに紹介します！\n #{arraySakePrefectureCode[sakeIndex]}のお酒"
 
                 if ! sakeData.sakes[sakeRandom].maker_url is undefined or null
                   msg.send sakeData.sakes[sakeRandom].sake_name + "(#{sakeData.sakes[sakeRandom].sake_furigana})\n" + sakeData.sakes[sakeRandom].maker_name + "(#{sakeData.sakes[sakeRandom].maker_url})"
