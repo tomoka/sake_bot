@@ -25,7 +25,7 @@ module.exports = (robot) ->
       .get() (sakeErr, sakeRes, sakeBody) ->
         # console.log err
         # console.log res
-        console.log body
+        # console.log body
         # if ! res.headers['content-type'].match /^application¥/json/
         #  msg.send "Didn't get back JSON :("
         #  return
