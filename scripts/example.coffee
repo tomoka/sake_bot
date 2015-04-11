@@ -61,7 +61,7 @@ module.exports = (robot) ->
                 msg.send message + "の日本酒をランダムに紹介します！"
 
                 if ! sakeData.sakes[sakeRandom].maker_url is undefined or null
-                  msg.send sakeData.sakes[sakeRandom].sake_name + "(#{sakeData.sakes[sakeRandom].sake_furigana})" + sakeData.sakes[sakeRandom].maker_name + "(#{sakeData.sakes[sakeRandom].maker_url})"
+                  msg.send sakeData.sakes[sakeRandom].sake_name + "(#{sakeData.sakes[sakeRandom].sake_furigana})\n" + sakeData.sakes[sakeRandom].maker_name + "(#{sakeData.sakes[sakeRandom].maker_url})"
                 else 
                   msg.send sakeData.sakes[sakeRandom].sake_name + "(#{sakeData.sakes[sakeRandom].sake_furigana})" + sakeData.sakes[sakeRandom].maker_name
                 
