@@ -66,7 +66,8 @@ module.exports = (robot) ->
                 # msg.send "Ran into an error parsing item JSON :("
                 return
         catch error
-          msg.send "Ran into an error parsing sake JSON :("
+          msg.send message
+          # msg.send "Ran into an error parsing sake JSON :("
           return
 
 
