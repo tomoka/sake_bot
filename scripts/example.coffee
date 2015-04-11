@@ -40,7 +40,11 @@ module.exports = (robot) ->
         else if arraySakePrefectureCodeKanaMin[index] is message
           sakeNum = index + 1
           sakeIndex = index
-        else if "日本酒" is message or  "おすすめ" is message
+        else if "日本酒" is message
+          osusumeFlag = true
+          sakeNum = Math.floor(Math.random() * 47) + 1
+          sakeIndex = index
+        else if "おすすめ" is message
           osusumeFlag = true
           sakeNum = Math.floor(Math.random() * 47) + 1
           sakeIndex = index
@@ -74,7 +78,7 @@ module.exports = (robot) ->
               try
                 itemData = JSON.parse (itemBody)
                 console.log sakeData.sakes[sakeRandom].sake_name
-                  if osusumeFlag
+                  if osusumeFlag is false
                     msg.send message + "の日本酒をランダムに紹介します！"
                   else
                     msg.send "日本酒をランダムに紹介します！"
