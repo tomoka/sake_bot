@@ -70,12 +70,13 @@ module.exports = (robot) ->
                 if ! sakeData.sakes[sakeRandom].maker_url is undefined or null
                   msg.send sakeData.sakes[sakeRandom].sake_name + "(#{sakeData.sakes[sakeRandom].sake_furigana})\n" + sakeData.sakes[sakeRandom].maker_name + "(#{sakeData.sakes[sakeRandom].maker_url})"
                 else 
-                  msg.send sakeData.sakes[sakeRandom].sake_name + "(#{sakeData.sakes[sakeRandom].sake_furigana})" + sakeData.sakes[sakeRandom].maker_name
+                  msg.send sakeData.sakes[sakeRandom].sake_name + "(#{sakeData.sakes[sakeRandom].sake_furigana})\n" + sakeData.sakes[sakeRandom].maker_name
                 
                 if ! itemData.Items[0] is undefined
                   msg.send sakeData.sakes[sakeRandom].url
                 else 
                   msg.send itemData.Items[0].Item.mediumImageUrls[0].imageUrl
+                  msg.send "![Qiita](http://qiita.com/icons/favicons/public/apple-touch-icon.png 'Qiita')"
 
               catch err
                 msg.send sakeData.sakes[sakeRandom].url
