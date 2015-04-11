@@ -76,7 +76,7 @@ module.exports = (robot) ->
                   msg.send sakeData.sakes[sakeRandom].url
                 else 
                   msg.send itemData.Items[0].Item.mediumImageUrls[0].imageUrl
-                  msg.send "![Qiita](http://qiita.com/icons/favicons/public/apple-touch-icon.png 'Qiita')"
+                  msg.send ![Qiita]('http://qiita.com/icons/favicons/public/apple-touch-icon.png')
 
               catch err
                 msg.send sakeData.sakes[sakeRandom].url
