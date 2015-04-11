@@ -28,6 +28,10 @@ module.exports = (robot) ->
         else if arraySakePrefectureCodeMin[index] is message
           sakeNum = index + 1
           sakeIndex = index
+        else if "おすすめ" is message or "日本酒" is message
+          sakeNum = Math.floor(Math.random() * 47) + 1
+          osusumeFlag = true
+          sakeIndex = index
     sakeUrl = "http://www.sakenote.com/api/v1/sakes?token=95f9b2288f8acd7eb2cf190af7cfbc223df5823c&prefecture_code=" + sakeNum
     robot.http(sakeUrl)
       .header('Accept', 'application/json')
@@ -58,7 +62,10 @@ module.exports = (robot) ->
               try
                 itemData = JSON.parse (itemBody)
                 console.log sakeData.sakes[sakeRandom].sake_name
-                msg.send message + "の日本酒をランダムに紹介します！"
+                if osusumeFlag is yes
+                  msg.send message + "をランダムに紹介します！"
+                else
+                  msg.send message + "の日本酒をランダムに紹介します！"
 
                 if ! sakeData.sakes[sakeRandom].maker_url is undefined or null
                   msg.send sakeData.sakes[sakeRandom].sake_name + "(#{sakeData.sakes[sakeRandom].sake_furigana})\n" + sakeData.sakes[sakeRandom].maker_name + "(#{sakeData.sakes[sakeRandom].maker_url})"
