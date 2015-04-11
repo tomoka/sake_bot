@@ -22,8 +22,27 @@ module.exports = (robot) ->
   robot.respond /(\S+)$/, (msg) ->
     message = msg.match[1]
     for value, index in arraySakePrefectureCode
-        if arraySakePrefectureCode[index] is message or arraySakePrefectureCodeMin[index] is message or arraySakePrefectureCodeKana[index] is message or arraySakePrefectureCodeKanaMin[index] is message or arraySakePrefectureCodeKana[index] is message or arraySakePrefectureCodeKanaMin[index] is message
+        if arraySakePrefectureCode[index] is message
           sakeNum = index + 1
+          sakeIndex = index
+        else if arraySakePrefectureCodeMin[index] is message
+          sakeNum = index + 1
+          sakeIndex = index
+        else if arraySakePrefectureCodeKana[index] is message
+          sakeNum = index + 1
+          sakeIndex = index
+        else if arraySakePrefectureCodeKanaMin[index] is message
+          sakeNum = index + 1
+          sakeIndex = index
+        else if arraySakePrefectureCodeKana[index] is message
+          sakeNum = index + 1
+          sakeIndex = index
+        else if arraySakePrefectureCodeKanaMin[index] is message
+          sakeNum = index + 1
+          sakeIndex = index
+        else if "日本酒" is message or  "おすすめ" is message
+          osusumeFlag = true
+          sakeNum = Math.floor(Math.random() * 47) + 1
           sakeIndex = index
     sakeUrl = "http://www.sakenote.com/api/v1/sakes?token=95f9b2288f8acd7eb2cf190af7cfbc223df5823c&prefecture_code=" + sakeNum
     robot.http(sakeUrl)
@@ -55,7 +74,10 @@ module.exports = (robot) ->
               try
                 itemData = JSON.parse (itemBody)
                 console.log sakeData.sakes[sakeRandom].sake_name
-                msg.send message + "の日本酒をランダムに紹介します！"
+                  if osusumeFlag
+                    msg.send message + "の日本酒をランダムに紹介します！"
+                  else
+                    msg.send "日本酒をランダムに紹介します！"
 
                 if ! sakeData.sakes[sakeRandom].maker_url is undefined or null
                   msg.send sakeData.sakes[sakeRandom].sake_name + "(#{sakeData.sakes[sakeRandom].sake_furigana})" + sakeData.sakes[sakeRandom].maker_name + "(#{sakeData.sakes[sakeRandom].maker_url})"
