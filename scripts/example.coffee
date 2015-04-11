@@ -34,10 +34,10 @@ module.exports = (robot) ->
         else if arraySakePrefectureCodeKanaMin[index] is message
           sakeNum = index + 1
           sakeIndex = index
-        else if arraySakePrefectureCodeKana[index] is message
+        else if arraySakePrefectureCodeRoma[index] is message
           sakeNum = index + 1
           sakeIndex = index
-        else if arraySakePrefectureCodeKanaMin[index] is message
+        else if arraySakePrefectureCodeRomaMin[index] is message
           sakeNum = index + 1
           sakeIndex = index
         else if "日本酒" is message
