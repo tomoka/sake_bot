@@ -77,3 +77,6 @@ module.exports = (robot) ->
         catch error
           msg.send message
           return
+
+  robot.respond /説明$/i, (msg) ->
+    msg.send "setumeisetumei"
