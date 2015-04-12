@@ -75,8 +75,8 @@ module.exports = (robot) ->
                 msg.send sakeData.sakes[sakeRandom].url
                 return
         catch error
-          msg.send message
+          if ! message is "説明"
+            msg.send message
+          else
+            msg.send "このボットは、都道府県名を投げかけると投げかけた都道府県の日本酒をランダムに紹介してくれます。また、「日本酒」「おすすめ」で投げかけると日本全国の日本酒からランダムで１品紹介します。【注意】都道府県名は漢字で呼びかけてください。”道” ”県” ”府”　は付けなくても回答は戻ってきます。"
           return
-
-  robot.respond /説明$/i, (msg) ->
-    msg.send "setumeisetumei"
