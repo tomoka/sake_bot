@@ -36,6 +36,7 @@ module.exports = (robot) ->
     robot.http(sakeUrl)
       .header('Accept', 'application/json')
       .get() (sakeErr, sakeRes, sakeBody) ->
+        console.log sakeRes
         sakeData = null
         try
           sakeData = JSON.parse (sakeBody)
