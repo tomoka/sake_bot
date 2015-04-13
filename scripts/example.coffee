@@ -76,7 +76,7 @@ module.exports = (robot) ->
                 return
         catch error
           if ! message is "説明"
-            msg.send message
-          else
             msg.send "このボットは、日本酒をランダムで検索する「日本酒ランダム検索Slack BOT」です。\n都道府県名を投げかけると投げかけた都道府県の日本酒をランダムに紹介してくれます。\nまた、「日本酒」「おすすめ」で投げかけると日本全国の日本酒からランダムで１品紹介します。\n【注意】都道府県名は漢字で呼びかけてください。”道” ”県” ”府”　は付けなくても回答は戻ってきます。"
+          else
+            msg.send message
           return
