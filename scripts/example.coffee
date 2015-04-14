@@ -19,7 +19,7 @@ module.exports = (robot) ->
   arraySakePrefectureCodeRoma = ["hokkaido","aomoriken","iwateken","miyagiken","akitaken","yamagataken","hukushimaken","ibaragiken","tochigiken","gunmaken","saitamaken","tibaken","tokyoto","kanagawaken","niigataken","toyamaken","ishikawaken","hukuiken","yamanashiken","naganoken","gihuken","shizuokaken","aichiken","mieken","shigaken","kyotohu","oosakahu","hyogoken","naraken","wakayamaken","tottoriken","shimaneken","okayamaken","hirosshimaken","yamaguchiken","tokushimaken","kagawaken","ehimeken","kouchiken","hukuokaken","sagaken","nagasakiken","kumamotoken","ooitaken","miyagiken","kagoshimaken","okinawaken"]
   arraySakePrefectureCodeRomaMin = ["hokkai","aomori","iwate","miyagi","akita","yamagata","hukushima","ibaragi","tochigi","gunma","saitama","tiba","tokyo","kanagawa","niigata","toyama","ishikawa","hukui","yamanashi","nagano","gihu","shizuoka","aichi","mie","shiga","kyoto","oosaka","hyogo","nara","wakayama","tottori","shimane","okayama","hirosshima","yamaguchi","tokushima","kagawa","ehime","kouchi","hukuoka","saga","nagasaki","kumamoto","ooita","miyagi","kagoshima","okinawa"]
 
-  robot.respond /(.)$/, (msg) ->
+  robot.respond /(.*)$/, (msg) ->
     message = msg.match[1]
     console.log msg
     console.log msg.match[1]
