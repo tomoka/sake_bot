@@ -21,7 +21,7 @@ module.exports = (robot) ->
 
   robot.respond /(\S+)$/, (msg) ->
     message = msg.match[1]
-    console.log "------------------------------------>" + msg
+    console.log "------------------------------------>" + "#{msg}"
     for value, index in arraySakePrefectureCode
         if arraySakePrefectureCode[index] is message
           sakeNum = index + 1
