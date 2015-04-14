@@ -20,8 +20,8 @@ module.exports = (robot) ->
   arraySakePrefectureCodeRomaMin = ["hokkai","aomori","iwate","miyagi","akita","yamagata","hukushima","ibaragi","tochigi","gunma","saitama","tiba","tokyo","kanagawa","niigata","toyama","ishikawa","hukui","yamanashi","nagano","gihu","shizuoka","aichi","mie","shiga","kyoto","oosaka","hyogo","nara","wakayama","tottori","shimane","okayama","hirosshima","yamaguchi","tokushima","kagawa","ehime","kouchi","hukuoka","saga","nagasaki","kumamoto","ooita","miyagi","kagoshima","okinawa"]
 
   robot.respond /(\S+)$/, (msg) ->
-    console.log "------------------------------------>" + msg
     message = msg.match[1]
+    console.log "------------------------------------>" + msg
     for value, index in arraySakePrefectureCode
         if arraySakePrefectureCode[index] is message
           sakeNum = index + 1
