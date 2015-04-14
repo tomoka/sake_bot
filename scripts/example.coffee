@@ -21,7 +21,8 @@ module.exports = (robot) ->
 
   robot.respond /(\S+)$/, (msg) ->
     message = msg.match[1]
-    console.log "------------------------------------>" + "#{msg}"
+    console.log msg
+    console.log msg.match[1]
     for value, index in arraySakePrefectureCode
         if arraySakePrefectureCode[index] is message
           sakeNum = index + 1
@@ -37,7 +38,7 @@ module.exports = (robot) ->
     robot.http(sakeUrl)
       .header('Accept', 'application/json')
       .get() (sakeErr, sakeRes, sakeBody) ->
-        console.log sakeRes
+        # console.log sakeRes
         sakeData = null
         try
           sakeData = JSON.parse (sakeBody)
@@ -45,8 +46,8 @@ module.exports = (robot) ->
 
           sakeItemKeyword = encodeURIComponent "日本酒　#{sakeData.sakes[sakeRandom].sake_name}"
           sakeMakerAddress = encodeURIComponent "#{arraySakePrefectureCode[sakeIndex]}"
-          console.log sakeMakerAddress
-          console.log sakeItemKeyword
+          # console.log sakeMakerAddress
+          # console.log sakeItemKeyword
           sakeItemUrl = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20140222?format=json&keyword=" + sakeItemKeyword + "&maker_address=#{sakeMakerAddress}&imageFlag=1&genreId=100337&applicationId=1058730448257396288"
 
           robot.http(sakeItemUrl)
