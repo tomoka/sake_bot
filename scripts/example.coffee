@@ -15,6 +15,8 @@ module.exports = (robot) ->
 
   robot.respond /(.*)$/, (msg) ->
     message = msg.match[1]
+    messagelength = message.length
+    msg.send  messagelength + " 文字"
 
     if message.match /.*[都道府県]/
       extension = message
