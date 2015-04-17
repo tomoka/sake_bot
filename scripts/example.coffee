@@ -24,6 +24,7 @@ module.exports = (robot) ->
         msg.send  extension + " はけんめいです"
       else
         msg.send  "けんめいじゃないよ"
+    else
     msg.send  "文字数おおい"
 
     for value, index in arraySakePrefectureCode
