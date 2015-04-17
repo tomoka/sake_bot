@@ -25,7 +25,8 @@ module.exports = (robot) ->
       else
         msg.send  "けんめいじゃないよ"
     else
-
+      msg.send  "けんめいじゃないよけんめいじゃないよ"
+      
     for value, index in arraySakePrefectureCode
         if arraySakePrefectureCode[index] is message
           sakeNum = index + 1
