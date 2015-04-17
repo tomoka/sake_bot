@@ -20,6 +20,8 @@ module.exports = (robot) ->
     if match?
       extension = match[1]
       console.log extension
+    else
+      console.log "けんめいじゃないよ"
 
 
     for value, index in arraySakePrefectureCode
@@ -53,7 +55,7 @@ module.exports = (robot) ->
               itemData = null
               try
                 itemData = JSON.parse (itemBody)
-                console.log sakeData.sakes[sakeRandom].sake_name
+                # console.log sakeData.sakes[sakeRandom].sake_name
                 if osusumeFlag is yes
                   msg.send message + "をランダムに紹介します！\n"+ arraySakePrefectureCode[sakeIndex] + "のお酒"
                 else
