@@ -16,9 +16,8 @@ module.exports = (robot) ->
   robot.respond /(.*)$/, (msg) ->
     message = msg.match[1]
 
-    message.match /.*[都道府県]/ 
-    if match
-      extension = match[1]
+    if message.match /.*[都道府県]/
+      extension = message
       console.log extension
     else
       console.log "けんめいじゃないよ"
