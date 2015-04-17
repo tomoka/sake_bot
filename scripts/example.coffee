@@ -18,12 +18,13 @@ module.exports = (robot) ->
     messagelength = message.length
     msg.send  messagelength + " 文字"
 
-    if message.match /.*[都道府県]/
-      extension = message
-      msg.send  extension + " はけんめいです"
-    else
-      msg.send  "けんめいじゃないよ"
-
+    if 5 > messagelength > 2
+      if message.match /.*[都道府県]/
+        extension = message
+        msg.send  extension + " はけんめいです"
+      else
+        msg.send  "けんめいじゃないよ"
+    msg.send  "文字数おおい"
 
     for value, index in arraySakePrefectureCode
         if arraySakePrefectureCode[index] is message
