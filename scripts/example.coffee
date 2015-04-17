@@ -19,8 +19,8 @@ module.exports = (robot) ->
     msg.send  messagelength + " 文字"
 
     if 5 > messagelength > 2 
-      if !message.match /^[-0-9A-Za-z]*/ && !message.match /^[-０-１Ａ-Ｚａ-ｚ]*/
-        if !message.match /^[ぁ-ん゛ゝゞ]+$/ 
+      if !message.match /[-0-9A-Za-z]*/ && !message.match /[-０-１Ａ-Ｚａ-ｚ]*/
+        if !message.match /[ぁ-ん゛ゝゞ]*/ 
           if message.match /.*[都道府県]/
             extension = message
             msg.send  extension + " はけんめいです"
