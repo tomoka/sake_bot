@@ -18,9 +18,9 @@ module.exports = (robot) ->
 
     if message.match /.*[都道府県]/
       extension = message
-      console.log extension
+      msg.send  extension + " はけんめいです"
     else
-      console.log "けんめいじゃないよ"
+      msg.send  "けんめいじゃないよ"
 
 
     for value, index in arraySakePrefectureCode
