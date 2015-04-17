@@ -19,8 +19,8 @@ module.exports = (robot) ->
     msg.send  messagelength + " 文字"
 
     if 5 > messagelength > 2 
-      if !message.match /[-0-9A-Za-z]*/ && !message.match /[-０-１Ａ-Ｚａ-ｚ]*/
-        if !message.match /[ぁ-ん゛ゝゞ]*/ 
+      if !message.match /.*[-0-9A-Za-z]*/ || !message.match /[-０-１Ａ-Ｚａ-ｚ]*/
+        if !message.match /.*[ぁ-ん゛ゝゞ]*/ 
           if message.match /.*[都道府県]/
             extension = message
             msg.send  extension + " はけんめいです"
@@ -31,7 +31,7 @@ module.exports = (robot) ->
       else
         msg.send  "英数字ではなく漢字で入力してください"
     else
-      msg.send  "懸命は漢字で３〜４文字"
+      msg.send  "漢字で３〜４文字"
 
     for value, index in arraySakePrefectureCode
         if arraySakePrefectureCode[index] is message
