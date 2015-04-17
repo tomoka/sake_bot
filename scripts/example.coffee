@@ -17,7 +17,7 @@ module.exports = (robot) ->
     message = msg.match[1]
 
     message.match /.*[都道府県]/ 
-    if match?
+    if match
       extension = match[1]
       console.log extension
     else
