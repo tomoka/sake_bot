@@ -16,7 +16,7 @@ module.exports = (robot) ->
   robot.respond /(.*)$/, (msg) ->
     message = msg.match[1]
     messagelength = message.length
-    console.log   messagelength + " 文字"
+    # console.log   messagelength + " 文字"
 
     if 5 > messagelength > 2 
       if !message.match /.*[-0-9A-Za-z]*/ || !message.match /[-０-１Ａ-Ｚａ-ｚ]*/
