@@ -16,14 +16,14 @@ module.exports = (robot) ->
   robot.respond /(.*)$/, (msg) ->
     message = msg.match[1]
     messagelength = message.length
-    msg.send  messagelength + " 文字"
+    console.log  messagelength + " 文字"
 
     if 5 > messagelength > 2 
       if !message.match /.*[-0-9A-Za-z]*/ || !message.match /[-０-１Ａ-Ｚａ-ｚ]*/
         if !message.match　/^[ぁ-ゞ]+$/
           if message.match /.*[都道府県]/
             extension = message
-            console.log  extension + " はけんめいです"
+            console.log   extension + " はけんめいです"
           else
             console.log  "けんめいじゃないよ"
         else
