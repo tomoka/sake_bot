@@ -16,7 +16,7 @@ module.exports = (robot) ->
   robot.respond /(.*)$/, (msg) ->
     message = msg.match[1]
     messagelength = message.length
-    console.log  messagelength + " 文字"
+    console.log   messagelength + " 文字"
 
     if 5 > messagelength > 2 
       if !message.match /.*[-0-9A-Za-z]*/ || !message.match /[-０-１Ａ-Ｚａ-ｚ]*/
@@ -25,13 +25,13 @@ module.exports = (robot) ->
             extension = message
             console.log   extension + " はけんめいです"
           else
-            console.log  "けんめいじゃないよ"
+            console.log "けんめいじゃないよ"
         else
-          console.log  "ひらがなでなく漢字で入力してください"
+          console.log "ひらがなでなく漢字で入力してください"
       else
-        console.log  "英数字ではなく漢字で入力してください"
+        console.log "英数字ではなく漢字で入力してください"
     else
-      console.log  "漢字で３〜４文字"
+      console.log "漢字で３〜４文字"
 
     for value, index in arraySakePrefectureCode
         if arraySakePrefectureCode[index] is message
