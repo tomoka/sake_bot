@@ -1,3 +1,12 @@
+酒ぼっと
+
+まだ、改良しないといけません。
+１）都道府県を正規表現に
+２）銘柄検索出来るように
+
+時間が出来たらやろうは、一生時間なんて出来ない事はわかっているんだけどなぁ。
+
+
 # tomtom
 
 tomtom is a chat bot built on the [Hubot][hubot] framework. It was
